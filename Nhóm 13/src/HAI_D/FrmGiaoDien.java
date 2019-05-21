@@ -43,10 +43,11 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         centerHeight = height/2;
         LineForm = new javax.swing.JFrame();
         g2 = (Graphics2D)jKhungVe.getGraphics();
-
+        
+        
         listCircle= new ArrayList<Circle2D>();
         listEllipse =new ArrayList<Ellipse2D>();
-
+       // listCung= new ArrayList<Cung>();   
         listLine=new ArrayList<Line2D>();
 
         
@@ -59,7 +60,6 @@ public class FrmGiaoDien extends javax.swing.JFrame {
     public Line2D line;
 
     public List<Line2D> listLine;
-
     public List<Circle2D> listCircle;
     public List<Ellipse2D> listEllipse;
 
@@ -73,6 +73,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         jKhungVe = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ỨNG DỤNG VẼ HÌNH");
@@ -84,6 +85,11 @@ public class FrmGiaoDien extends javax.swing.JFrame {
 
         jKhungVe.setBackground(new java.awt.Color(204, 204, 204));
         jKhungVe.setPreferredSize(new java.awt.Dimension(500, 500));
+        jKhungVe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jKhungVeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jKhungVeLayout = new javax.swing.GroupLayout(jKhungVe);
         jKhungVe.setLayout(jKhungVeLayout);
@@ -100,13 +106,22 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("2D");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jKhungVe, javax.swing.GroupLayout.DEFAULT_SIZE, 1299, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(645, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 562, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(587, 587, 587))
         );
@@ -114,7 +129,9 @@ public class FrmGiaoDien extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(33, 33, 33)
                 .addComponent(jKhungVe, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                 .addContainerGap())
@@ -134,11 +151,11 @@ public class FrmGiaoDien extends javax.swing.JFrame {
     }
     
     public void refresh() {
-     //   veOxy();
+     
          toaDo();    
-        for (int i =0;i<listLine.size();i++){ 
-            listLine.get(i).draw(g2);
-        }
+          for (Line2D listLine1 : listLine) {
+              listLine1.draw(g2);
+          }
          for (int i =0;i<listCircle.size();i++) {
             listCircle.get(i).draw(g2);
         }
@@ -185,6 +202,12 @@ public class FrmGiaoDien extends javax.swing.JFrame {
                                         line.setY2(B.y);
 				//	 line.setAngle(line.getAngle() + line.getSpeed());
 					line.draw(g2);
+                                        
+                                            
+        
+  
+      
+    
                                         
     }
      public void refreshColor() {
@@ -238,10 +261,58 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         
         Circle2D circle = new Circle2D(ps.x1 + jKhungVe.getWidth()/2,-ps.y1+jKhungVe.getHeight()/2,
                                        ps.r, Color.RED);
+        
+        
+        String y1="-20";
+        String R="30";
+        String x1="80";
+        
+         int yd= Integer.parseInt(y1)+Integer.parseInt(R);
+         int yc= Integer.parseInt(y1)-Integer.parseInt(R);
+         
+         Line2D line2= new Line2D(Integer.parseInt(x1) + jKhungVe.getWidth()/2,-yd+jKhungVe.getHeight()/2
+                ,Integer.parseInt(x1)+ jKhungVe.getWidth() /2,-yc+jKhungVe.getHeight()/2,Color.red);
+
+         int xc=Integer.parseInt(x1)+Integer.parseInt(R)+15;
+        // JOptionPane.showInputDialog(xc);
+         Line2D ten= new Line2D(Integer.parseInt(x1) + jKhungVe.getWidth()/2,-Integer.parseInt(y1)+jKhungVe.getHeight()/2
+                ,xc+ jKhungVe.getWidth() /2,-Integer.parseInt(y1)+jKhungVe.getHeight()/2,Color.red);
+        listLine.add(ten);
+        listLine.add(line2);
+       
+        
+        
+        
+        
+        Cung circle2 = new Cung(Integer.parseInt(x1) + jKhungVe.getWidth()/2,-Integer.parseInt(y1)+jKhungVe.getHeight()/2,
+                                       Integer.parseInt(R), Color.red);
+        
+        
+        
+        circle2.draw(g2);
+        
+        
+        
         listCircle.add(circle);
         listLine.add(line);
         refresh();
     }//GEN-LAST:event_formWindowOpened
+
+    private void jKhungVeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jKhungVeMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,evt.getX());
+    }//GEN-LAST:event_jKhungVeMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int a =listLine.toArray().length;
+        int dodich=10;
+        Line2D l= listLine.get(6);
+                       l.x1+=dodich;
+                       l.x2+=dodich;
+               listLine.set(6, l);
+               refresh();
+      //  JOptionPane.showMessageDialog(null,a);
+    }//GEN-LAST:event_jButton1ActionPerformed
  
   
      
@@ -283,6 +354,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jKhungVe;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
