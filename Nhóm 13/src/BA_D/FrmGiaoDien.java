@@ -46,14 +46,17 @@ public class FrmGiaoDien extends javax.swing.JFrame {
     public List<Cube3D> listCube;
     public List<Globular3D> listGlobular;
     public javax.swing.JFrame LineForm;
-
+ Round round = new Round();
+ 
     private void veOxyz(){
         jKhungVe.update(g2);
+       
         g2.clearRect(0, 0, jKhungVe.WIDTH, jKhungVe.HEIGHT);
         g2.setColor(Color.GRAY); 
-        g2.drawLine(jKhungVe.getWidth()/2, 0, jKhungVe.getWidth()/2, jKhungVe.getHeight()/2);
-        g2.drawLine(jKhungVe.getWidth() /2, jKhungVe.getHeight()/2, jKhungVe.getWidth(), jKhungVe.getHeight()/2);
-        g2.drawLine(jKhungVe.getWidth() /2, jKhungVe.getHeight()/2,0, jKhungVe.getHeight());
+        g2.drawLine(round.round(jKhungVe.getWidth()/2), 0, round.round(jKhungVe.getWidth()/2), round.round(jKhungVe.getHeight()/2));
+        g2.drawLine(round.round((jKhungVe.getWidth()) /2), round.round(jKhungVe.getHeight()/2), round.round(jKhungVe.getWidth()), round.round(jKhungVe.getHeight()/2));
+        g2.drawLine( round.round(jKhungVe.getWidth() /2),round.round(jKhungVe.getHeight()/2),0, round.round(jKhungVe.getHeight()));
+        toaDo();
     }
 
     @SuppressWarnings("unchecked")
@@ -208,6 +211,15 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
         
+         public void toaDo() {
+         for (int i = 0; i <= 261; i++)
+        {
+	  g2.drawLine(5*i , 0, 5* i , 753);
+	  g2.drawLine(  0   , 5* i, 960  , 5* i);
+	  g2.setColor(Color.GRAY);
+        }
+    }
+         
     public void refreshOxyz() {
         veOxyz();
         for (int i =0;i<listCube.size();i++) {

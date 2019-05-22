@@ -5,7 +5,7 @@ import java.awt.Graphics;
 public abstract class MyShape3 {
     int x, y, z;
     public Color color;
-    
+    Round round = new Round();
     
     public MyShape3(){
         x = 0;
@@ -21,7 +21,7 @@ public abstract class MyShape3 {
         this.x=x;//-tempx;
         this.y=y;//+tempy;
         this.z=z;
-        this.color=color;
+        this.color=round.color3D;
     }
 
     public void setX(int x) {
@@ -60,7 +60,8 @@ public abstract class MyShape3 {
     public void putPixel(int x, int y, Graphics g)
     {
     	//g.drawLine( x, y, x, y );
-        g.fillRect(x, y, 1, 1);
+//        g.fillRect(x, y, 1, 1);
+        g.fillRect(round.round(x), round.round(y), round.size3D, round.size3D);
     }
     abstract public void draw( Graphics g );
    

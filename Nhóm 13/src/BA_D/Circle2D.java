@@ -9,7 +9,7 @@ public class Circle2D {
     int x ,y;
     int R;
     Color color;
-    
+    Round round = new Round();
 
     public Circle2D() {
         
@@ -48,11 +48,12 @@ public class Circle2D {
     }
 
     public void setColor(Color color) {
-        this.color = color;
+        this.color = round.color3D;
     }
     public void putPixel(int x, int y, Graphics g)
     {
-    	g.fillRect(x, y, 1, 1);
+         
+    	g.fillRect(round.round(x), round.round(y), round.size3D, round.size3D);
     }
       
     public void Midpoint(int x1, int y1, Graphics g)
