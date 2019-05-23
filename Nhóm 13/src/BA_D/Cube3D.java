@@ -74,7 +74,6 @@ public class Cube3D extends MyShape3{
 				putPixel(x, y, g);
 			}
 		}
-
 		else if (y1 == y2) // duong ngang
 		{
 			while (x != x2 + 1) {
@@ -86,6 +85,7 @@ public class Cube3D extends MyShape3{
 			putPixel(x, y, g);
 			if (Math.abs(Dx)>Math.abs(Dy)) {
 				int p=Dy-Dx/2;
+                               
 			
 				while (x != x2) {
 				
@@ -194,11 +194,8 @@ public class Cube3D extends MyShape3{
                                     if( dem%10 > 5){
                                          putPixel(x,y,g);
                                     }
-
-				}
-				
-			}
-			
+				}	
+			}	
 		}
 	}
 

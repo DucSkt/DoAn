@@ -89,9 +89,7 @@ public void draw(Graphics g)
     @Override
     public String toString() {
         return "Hình tròn";
-    }
-    
-    
+    }   
 };
 
 

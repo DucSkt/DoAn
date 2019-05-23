@@ -53,9 +53,9 @@ public class FrmGiaoDien extends javax.swing.JFrame {
        
         g2.clearRect(0, 0, jKhungVe.WIDTH, jKhungVe.HEIGHT);
         g2.setColor(Color.GRAY); 
-        g2.drawLine(round.round(jKhungVe.getWidth()/2), 0, round.round(jKhungVe.getWidth()/2), round.round(jKhungVe.getHeight()/2));
-        g2.drawLine(round.round((jKhungVe.getWidth()) /2), round.round(jKhungVe.getHeight()/2), round.round(jKhungVe.getWidth()), round.round(jKhungVe.getHeight()/2));
-        g2.drawLine( round.round(jKhungVe.getWidth() /2),round.round(jKhungVe.getHeight()/2),0, round.round(jKhungVe.getHeight()));
+        g2.drawLine(round.round2(jKhungVe.getWidth()/2), 0, round.round2(jKhungVe.getWidth()/2), round.round2(jKhungVe.getHeight()/2));
+        g2.drawLine(round.round2((jKhungVe.getWidth()) /2), round.round2(jKhungVe.getHeight()/2), round.round2(jKhungVe.getWidth()), round.round2(jKhungVe.getHeight()/2));
+        g2.drawLine( round.round2(jKhungVe.getWidth() /2),round.round2(jKhungVe.getHeight()/2),0, round.round2(jKhungVe.getHeight()));
         toaDo();
     }
 

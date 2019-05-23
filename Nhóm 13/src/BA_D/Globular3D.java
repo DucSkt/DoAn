@@ -34,7 +34,7 @@ public class Globular3D extends MyShape3 {
     }
     
     public void putPixelEllipse (int x1,int y1, Graphics g)
-    {  
+    {
         putPixel(-x1 + getX(),  y1 + getY(),g);
         putPixel( x1 + getX(),  y1 + getY(),g);
         if (((x1 + getX() + y1 + getY()) % 10) > 5) 
