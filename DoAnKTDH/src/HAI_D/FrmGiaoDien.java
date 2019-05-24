@@ -37,8 +37,17 @@ public class FrmGiaoDien extends javax.swing.JFrame {
        int dauy= -80;
        int daur= 30;
        boolean exit= false;
+       Thread gg;
     public FrmGiaoDien() {
         initComponents();
+        
+        SutBong.setEnabled(false);
+        PhongLao.setEnabled(false);
+        DoiXungOx.setEnabled(false);
+        DoiXungOy.setEnabled(false);
+        DoiXungTruc.setEnabled(false);
+        ThuPhong.setEnabled(false);
+        Quay.setEnabled(false);
       
         width=jKhungVe.getWidth();
         height=jKhungVe.getHeight();
@@ -60,7 +69,6 @@ public class FrmGiaoDien extends javax.swing.JFrame {
     }
      
     public Graphics2D g2;
-
     //public Line2D line;
     public List<Line2D> listxoamanhinh;
 
@@ -75,6 +83,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
     public List<Circle2D> listbanh;
 
     public List<Circle2D> listCircle;
+    
     public List<Ellipse2D> listEllipse;
 
     public javax.swing.JFrame LineForm;
@@ -121,7 +130,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -303,16 +312,16 @@ public class FrmGiaoDien extends javax.swing.JFrame {
 
         jLabel19.setText("Y");
 
-        jLabel15.setText("Second(s) :");
+        jLabel15.setText("Giây (s) :");
 
-        jLabel20.setText("Minute(m) :");
+        jLabel20.setText("Phút (m) :");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/icons8-home-50.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Back.setBackground(new java.awt.Color(255, 255, 255));
+        Back.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/icons8-home-50.png"))); // NOI18N
+        Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackActionPerformed(evt);
             }
         });
 
@@ -333,53 +342,53 @@ public class FrmGiaoDien extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addGap(38, 38, 38))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel23)
+                                            .addComponent(jLabel24))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel6))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 25, Short.MAX_VALUE))
+                            .addComponent(Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel8))
-                                        .addGap(22, 22, 22)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel8))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(22, 22, 22))
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel20))
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel17)
-                                            .addComponent(jLabel18)
-                                            .addComponent(jLabel15)
-                                            .addComponent(jLabel20))
-                                        .addGap(22, 22, 22)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel23)
-                                                    .addComponent(jLabel24))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel4)
-                                                    .addComponent(jLabel6))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21)))
+                                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,50 +461,47 @@ public class FrmGiaoDien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jKhungVe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(257, 257, 257)
-                                .addComponent(jLabel21))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel23)
-                                    .addComponent(jLabel14))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel24)
-                                    .addComponent(jLabel25))
-                                .addGap(16, 16, 16)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel17))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel19))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel22)))))
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -616,6 +622,23 @@ public class FrmGiaoDien extends javax.swing.JFrame {
             }
         }
     }
+    public void vedongho()
+    {
+        Square2D dongho1= new Square2D(-230+centerWidth,230+ centerHeight, 460, Color.YELLOW);
+        dongho1.draw(g2);
+        Square2D dongho2= new Square2D(-235+centerWidth,235+ centerHeight, 470, Color.YELLOW);
+        dongho2.draw(g2);
+        Square2D dongho3= new Square2D(-240+centerWidth,240+ centerHeight, 480, Color.BLACK);
+        dongho3.draw(g2);
+        Triangle2D tamgiac= new Triangle2D(-225+centerWidth,225+centerHeight,-225+centerWidth,centerHeight,centerWidth,225+centerHeight, Color.BLACK);
+        tamgiac.draw(g2);
+        Triangle2D tamgiac1= new Triangle2D(-225+centerWidth,-225+centerHeight,-225+centerWidth,centerHeight,centerWidth,-225+centerHeight, Color.BLACK);
+        tamgiac1.draw(g2);
+        Triangle2D tamgiac2= new Triangle2D(225+centerWidth,-225+centerHeight,225+centerWidth,centerHeight,centerWidth,-225+centerHeight, Color.BLACK);
+        tamgiac2.draw(g2);
+        Triangle2D tamgiac3= new Triangle2D(225+centerWidth,225+centerHeight,225+centerWidth,centerHeight,centerWidth,225+centerHeight, Color.BLACK);
+        tamgiac3.draw(g2);
+    }
     public int rotatex (int x,int y, int alp){
         double pi = 3.14;
         double radian = alp*pi/180;
@@ -709,13 +732,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
      
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         toaDo();
-        SutBong.setEnabled(false);
-        PhongLao.setEnabled(false);
-        DoiXungOx.setEnabled(false);
-        DoiXungOy.setEnabled(false);
-        DoiXungTruc.setEnabled(false);
-        ThuPhong.setEnabled(false);
-        Quay.setEnabled(false);
+
     }//GEN-LAST:event_formWindowOpened
 
     private void SutBongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SutBongActionPerformed
@@ -755,7 +772,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
             
             listbanh.add(xoabanh);
         }
-        jLabel7.setText(ps.chany2-15+"");
+        jLabel7.setText((ps.chany2-15)/5+1+"");
         
          Thread gx = new Thread(()->{
           for (int i =0;i<listbanh.size();i++) {
@@ -763,7 +780,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
                 //System.out.println(listbanh.get(i).x);
                 listbanh.get(i).draw(g2);
                 toaDo();
-                jLabel2.setText(listbanh.get(i).x-jKhungVe.getWidth()/2+"");
+                jLabel2.setText((listbanh.get(i).x-jKhungVe.getWidth()/2)/5+1+"");
                 Thread.sleep(15);
             } catch (InterruptedException ex) {
                 Logger.getLogger(FrmGiaoDien.class.getName()).log(Level.SEVERE, null, ex);
@@ -775,7 +792,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
                // System.out.println(i);
                 listdau.get(i).draw(g2);
                 toaDo();
-                jLabel2.setText(listbanh.get(0).x-jKhungVe.getWidth()/2+"");
+                jLabel2.setText((listbanh.get(i).x-jKhungVe.getWidth()/2)/5+1+"");
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(FrmGiaoDien.class.getName()).log(Level.SEVERE, null, ex);
@@ -796,8 +813,8 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         ps.than();
         ps.chan();
         ps.tay();
-        jLabel14.setText(daux+"");
-        jLabel25.setText(-dauy+"");
+        jLabel14.setText((daux)/5+1+"");
+        jLabel25.setText((-dauy)/5+1+"");
         Line2D than1= new Line2D(-ps.thanx1 + jKhungVe.getWidth()/2,-(ps.thany1)+jKhungVe.getHeight()/2
                 ,-ps.thanx2+ jKhungVe.getWidth() /2,-ps.thany2+jKhungVe.getHeight()/2,Color.WHITE);
 //        for(MyShape dt: list){   300 - 250 - 300 - 300
@@ -971,8 +988,8 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         ps.than();
         ps.chan();
         ps.tay();
-        jLabel14.setText(-daux+"");
-        jLabel25.setText(dauy+"");
+        jLabel14.setText((-daux)/5+1+"");
+        jLabel25.setText((dauy)/5+1+"");
         //System.out.println(ps.chanx2 + " - " + ps.chany2 + " - " + listLine.size()  + " - " + (-ps.thany2+jKhungVe.getHeight()/2));
          Line2D than= new Line2D(ps.thanx1 + jKhungVe.getWidth()/2,(ps.thany1)+jKhungVe.getHeight()/2
                 ,ps.thanx2+ jKhungVe.getWidth() /2,ps.thany2+jKhungVe.getHeight()/2,Color.WHITE);
@@ -1149,8 +1166,8 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         ps.than();
         ps.chan();
         ps.tay();
-        jLabel14.setText(-daux+"");
-        jLabel25.setText(-dauy+"");
+        jLabel14.setText((-daux)/5+1+"");
+        jLabel25.setText((-dauy)/5+1+"");
         Line2D than1= new Line2D(-ps.thanx1 + jKhungVe.getWidth()/2,-(ps.thany1)+jKhungVe.getHeight()/2
                 ,-ps.thanx2+ jKhungVe.getWidth() /2,-ps.thany2+jKhungVe.getHeight()/2,Color.WHITE);
 //        for(MyShape dt: list){   300 - 250 - 300 - 300
@@ -1356,7 +1373,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
             listlao.add(xoalao);
 
         }
-        jLabel9.setText(ps.laoy1+"");
+        jLabel9.setText((ps.laoy1)/5+1+"");
         
         Thread gx = new Thread(()->{
           for (int i =0;i<listlao.size();i++) {
@@ -1366,7 +1383,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
                 toaDo();
                 Thread.sleep(10);
                 
-                jLabel3.setText(listlao.get(i).x1-jKhungVe.getWidth()/2+"");               
+                jLabel3.setText((listlao.get(i).x1-jKhungVe.getWidth()/2)/5+1+"");               
             } catch (InterruptedException ex) {
                 Logger.getLogger(FrmGiaoDien.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1375,7 +1392,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
             try {
                 listnguoi.get(i).draw(g2);
                 toaDo();
-                jLabel3.setText(listlao.get(0).x1-jKhungVe.getWidth()/2+"");
+                jLabel3.setText((listlao.get(i).x1-jKhungVe.getWidth()/2)/5+1+"");
             } catch (InterruptedException ex) {
                 Logger.getLogger(FrmGiaoDien.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1389,11 +1406,19 @@ public class FrmGiaoDien extends javax.swing.JFrame {
 
     private void XoaManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XoaManHinhActionPerformed
         // TODO add your handling code here:
+        SutBong.setEnabled(false);
+        PhongLao.setEnabled(false);
+        DoiXungOx.setEnabled(false);
+        DoiXungOy.setEnabled(false);
+        DoiXungTruc.setEnabled(false);
+        ThuPhong.setEnabled(false);
+        Quay.setEnabled(false);
         if(exit) {
                  gg.stop();   
         }
         xoamanhinh();
-         exit = false;
+        exit = false;
+
     }//GEN-LAST:event_XoaManHinhActionPerformed
 
     private void Vat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vat1ActionPerformed
@@ -1410,8 +1435,8 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         }
         xoamanhinh();
         venguoi();
-        jLabel14.setText(daux+"");
-        jLabel25.setText(dauy+"");
+        jLabel14.setText((daux)/5+1+"");
+        jLabel25.setText((dauy)/5+1+"");
          exit = false;
     }//GEN-LAST:event_Vat1ActionPerformed
 
@@ -1423,8 +1448,8 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         ps.than();
         ps.chan();
         ps.tay();
-        jLabel14.setText(ps.x1+"");
-        jLabel25.setText(ps.y1+"");
+        jLabel14.setText((ps.x1)/5+1+"");
+        jLabel25.setText((ps.y1)/5+1+"");
         
                  //System.out.println(ps.chanx2 + " - " + ps.chany2 + " - " + listLine.size()  + " - " + (-ps.thany2+jKhungVe.getHeight()/2));   
         Line2D than= new Line2D(ps.thanx1 + jKhungVe.getWidth()/2,-(ps.thany1)+jKhungVe.getHeight()/2
@@ -1499,7 +1524,12 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         DoiXungOy.setEnabled(false);
         DoiXungTruc.setEnabled(false);
         ThuPhong.setEnabled(false);
+        if(exit) {
+                 gg.stop();   
+        }
         xoamanhinh();
+        exit = false;
+        
         jLabel10.setText("");      
         jLabel10.setText("12");
         jLabel11.setText("");      
@@ -1508,12 +1538,7 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         jLabel12.setText("9");
         jLabel13.setText("");      
         jLabel13.setText("3");
-        Square2D dongho= new Square2D(-200+centerWidth,200+ centerHeight, 400, Color.YELLOW);
-        dongho.draw(g2);
-        Square2D dongho1= new Square2D(-205+centerWidth,205+ centerHeight, 410, Color.RED);
-        dongho1.draw(g2);
-        Square2D dongho2= new Square2D(-210+centerWidth,210+ centerHeight, 420, Color.GREEN);
-        dongho2.draw(g2);
+        vedongho();
         Line2D kim= new Line2D(centerWidth,centerHeight,centerWidth,-150+centerHeight, Color.BLUE);
            try {
                kim.draw(g2);
@@ -1521,10 +1546,11 @@ public class FrmGiaoDien extends javax.swing.JFrame {
                Logger.getLogger(FrmGiaoDien.class.getName()).log(Level.SEVERE, null, ex);
            }
     }//GEN-LAST:event_Vat2ActionPerformed
-Thread gg;
+
     private void QuayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuayActionPerformed
         // TODO add your handling code here:
-        
+        Quay.setEnabled(false);
+
         gg = new Thread(()->{
             exit = true;
         int mi=0;
@@ -1551,8 +1577,8 @@ Thread gg;
                     ,rotatex(centerWidth,-150+centerHeight,z)+centerWidth,rotatey(centerWidth,-150+centerHeight,z)+centerHeight, Color.BLUE);
             listLine.add(kim);
             
-            jLabel16.setText(listLine.get(0).x2-centerWidth+"");
-            jLabel19.setText(listLine.get(0).y2*-1+centerHeight+"");
+            jLabel16.setText((listLine.get(0).x2-centerWidth)/5+1+"");
+            jLabel19.setText((listLine.get(0).y2*-1+centerHeight)/5+1+"");
           //  System.out.println(listLine.get(0).y2-centerHeight);
             
             Line2D xoakim= new Line2D(rotatex(centerWidth,centerHeight,z)+centerWidth,rotatey(centerWidth,centerHeight,z)+centerHeight
@@ -1561,12 +1587,7 @@ Thread gg;
             Line2D kimmoi= new Line2D(rotatex(centerWidth,centerHeight,z+6)+centerWidth,rotatey(centerWidth,centerHeight,z+6)+centerHeight
                     ,rotatex(centerWidth,-150+centerHeight,z+6)+centerWidth,rotatey(centerWidth,-150+centerHeight,z+6)+centerHeight, Color.BLUE);
             listLine.add(kimmoi);
-            Square2D dongho= new Square2D(-200+centerWidth,200+ centerHeight, 400, Color.YELLOW);
-            dongho.draw(g2);
-            Square2D dongho1= new Square2D(-205+centerWidth,205+ centerHeight, 410, Color.RED);
-            dongho1.draw(g2);
-            Square2D dongho2= new Square2D(-210+centerWidth,210+ centerHeight, 420, Color.GREEN);
-            dongho2.draw(g2);
+            vedongho();
 
                try {
                    listLine.get(0).draw(g2);
@@ -1588,11 +1609,11 @@ Thread gg;
 
     }//GEN-LAST:event_QuayActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // TODO add your handling code here:
          Main.GiaoDien.main(new String[1]);
         setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1631,6 +1652,7 @@ Thread gg;
     }
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back;
     private javax.swing.JButton DoiXungOx;
     private javax.swing.JButton DoiXungOy;
     private javax.swing.JButton DoiXungTruc;
@@ -1642,7 +1664,6 @@ Thread gg;
     private javax.swing.JButton Vat2;
     private javax.swing.JButton XoaManHinh;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jKhungVe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

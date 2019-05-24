@@ -1,24 +1,25 @@
 package HAI_D;
 
-
 import java.awt.Color;
 import java.awt.Graphics;
-
 /**
- * This class inherits from MyShape and is responsible for drawing a line.
+ *
+ * @author ASUS
  */
-public class Line2D {
-	int x1,y1,x2,y2;
-        Color color;
-	public Line2D() {
+public class Triangle2D {
+    int x1,y1,x2,y2,x3,y3;
+    Color color;
+    public Triangle2D() {
 		super();
 	}
 
-    public Line2D(int x1, int y1, int x2, int y2, Color color) {
+    public Triangle2D(int x1, int y1, int x2, int y2, int x3, int y3, Color color) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+        this.x3 = x3;
+        this.y3 = y3;
         this.color = color;
     }
 
@@ -54,6 +55,22 @@ public class Line2D {
         this.y2 = y2;
     }
 
+    public int getX3() {
+        return x3;
+    }
+
+    public void setX3(int x3) {
+        this.x3 = x3;
+    }
+
+    public int getY3() {
+        return y3;
+    }
+
+    public void setY3(int y3) {
+        this.y3 = y3;
+    }
+
     public Color getColor() {
         return color;
     }
@@ -61,8 +78,8 @@ public class Line2D {
     public void setColor(Color color) {
         this.color = color;
     }
-
-     public int round(double tds)
+    
+    public int round(double tds)
     {
         int tdm;
         double sodu = tds % 5;
@@ -75,22 +92,18 @@ public class Line2D {
         if (tdm > 1000) tdm = 1000;
         return tdm;
     }
-       
+    
+    public void draw(Graphics g) {
+		g.setColor(getColor()); 
+		Midpoint(g, getX1(), getY1(), getX2(), getY2());
+                Midpoint(g, getX1(), getY1(), getX3(), getY3());
+                Midpoint(g, getX2(), getY2(), getX3(), getY3());
+	}
     public void putPixel(int x, int y, Graphics g)
     {
-    	//g.drawLine( x, y, x, y );
-        g.fillRect(round(x), round(y), 5, 5);
+    	  g.fillRect(round(x), round(y), 5, 5);
     }
-	public void draw(Graphics g) throws InterruptedException {
-
-		g.setColor(getColor()); // sets the color
-		// g.drawLine(getX1(), getY1(), getX2(), getY2()); // draws the line
-		Midpoint(g, getX1(), getY1(), getX2(), getY2());
-		// putPixel(getX1()+10, getY1()+10, g);
-                  
-	}
-
-	private void Midpoint(Graphics g, int x1, int y1, int x2, int y2) throws InterruptedException {
+    private void Midpoint(Graphics g, int x1, int y1, int x2, int y2) {
 		int x, y,Dx, Dy;
 		Dx = Math.abs(x2 - x1);
 		Dy = Math.abs(y2 - y1);
@@ -110,7 +123,7 @@ public class Line2D {
 			while (y != y2 + 1) {
 				
 				y += y_unit;
-				putPixel(x, y, g);                             
+				putPixel(x, y, g);
 			}
 		}
 
@@ -119,10 +132,10 @@ public class Line2D {
 			while (x != x2 + 1) {
 			
 				x += x_unit;
-				putPixel(x, y, g);                              
+				putPixel(x, y, g);
 			}
 		} else {
-			putPixel(x, y, g);                     
+			putPixel(x, y, g);
 			if (Math.abs(Dx)>Math.abs(Dy)) {
 				int p=Dy-Dx/2;
 			
@@ -151,22 +164,21 @@ public class Line2D {
 					}
 					y += y_unit;
 					putPixel(x, y, g);
-                                       
 
 				}
 				
 			}
 			
 		}
-            
+	}
+public String Name(){
+        return "Tam giác";
     }
-       
 
-    public String Name(){
-        return "Đường thẳng";
-    }    
-	@Override
+    @Override
     public String toString() {
-        return "Đường thẳng";
+        return "Tam giác";
     }
-} // end class MyLine
+    
+    
+}
