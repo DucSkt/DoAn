@@ -1344,7 +1344,11 @@ public class FrmGiaoDien extends javax.swing.JFrame {
 
     private void XoaManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XoaManHinhActionPerformed
         // TODO add your handling code here:
+        if(exit) {
+                 gg.stop();   
+        }
         xoamanhinh();
+         exit = false;
     }//GEN-LAST:event_XoaManHinhActionPerformed
 
     private void Vat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vat1ActionPerformed
@@ -1457,8 +1461,10 @@ public class FrmGiaoDien extends javax.swing.JFrame {
         jLabel13.setText("3");
         Square2D dongho= new Square2D(-200+centerWidth,200+ centerHeight, 400, Color.YELLOW);
         dongho.draw(g2);
-        Square2D dongho1= new Square2D(-205+centerWidth,205+ centerHeight, 410, Color.YELLOW);
+        Square2D dongho1= new Square2D(-205+centerWidth,205+ centerHeight, 410, Color.RED);
         dongho1.draw(g2);
+        Square2D dongho2= new Square2D(-210+centerWidth,210+ centerHeight, 420, Color.GREEN);
+        dongho2.draw(g2);
         Line2D kim= new Line2D(centerWidth,centerHeight,centerWidth,-150+centerHeight, Color.BLUE);
            try {
                kim.draw(g2);
@@ -1484,14 +1490,14 @@ Thread gg;
        
         for(int z=0;z<360;z=z+6){
             
-           dem=dem+1;
+           
            if(dem>59){
                dem=0;
                mi=mi+1;
                jLabel22.setText(mi+"");
            }
             jLabel21.setText(dem+"");
-            
+            dem=dem+1;
             Line2D kim= new Line2D(rotatex(centerWidth,centerHeight,z)+centerWidth,rotatey(centerWidth,centerHeight,z)+centerHeight
                     ,rotatex(centerWidth,-150+centerHeight,z)+centerWidth,rotatey(centerWidth,-150+centerHeight,z)+centerHeight, Color.BLUE);
             listLine.add(kim);
@@ -1506,6 +1512,12 @@ Thread gg;
             Line2D kimmoi= new Line2D(rotatex(centerWidth,centerHeight,z+6)+centerWidth,rotatey(centerWidth,centerHeight,z+6)+centerHeight
                     ,rotatex(centerWidth,-150+centerHeight,z+6)+centerWidth,rotatey(centerWidth,-150+centerHeight,z+6)+centerHeight, Color.BLUE);
             listLine.add(kimmoi);
+            Square2D dongho= new Square2D(-200+centerWidth,200+ centerHeight, 400, Color.YELLOW);
+            dongho.draw(g2);
+            Square2D dongho1= new Square2D(-205+centerWidth,205+ centerHeight, 410, Color.RED);
+            dongho1.draw(g2);
+            Square2D dongho2= new Square2D(-210+centerWidth,210+ centerHeight, 420, Color.GREEN);
+            dongho2.draw(g2);
 
                try {
                    listLine.get(0).draw(g2);
