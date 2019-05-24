@@ -375,8 +375,8 @@ public class FrmGiaoDien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "chưa nhập đủ dữ liệu, nhập lại!");
             return;
         }
-          jLabel10.setText((Integer.parseInt(x) + jKhungVe.getWidth()/2)+"");
-          jLabel11.setText((-Integer.parseInt(y)+jKhungVe.getHeight()/2)+"");
+          jLabel10.setText((Integer.parseInt(x))+"");
+          jLabel11.setText((-Integer.parseInt(y))+"");
           jLabel12.setText((Integer.parseInt(z))+"");
           
         Globular3D Glo = new Globular3D(Integer.parseInt(x) + jKhungVe.getWidth()/2,-Integer.parseInt(y)+jKhungVe.getHeight()/2,
@@ -419,8 +419,8 @@ public class FrmGiaoDien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "chưa nhập đủ dữ liệu, nhập lại!");
             return;
         }
-          jLabel10.setText((Integer.parseInt(x) + jKhungVe.getWidth()/2)+"");
-          jLabel11.setText((-Integer.parseInt(y)+jKhungVe.getHeight()/2)+"");
+          jLabel10.setText((Integer.parseInt(x)+""));
+          jLabel11.setText((Integer.parseInt(y)+""));
           jLabel12.setText((Integer.parseInt(z))+"");
                   
         Cube3D cube = new Cube3D(Integer.parseInt(x) + jKhungVe.getWidth()/2,-Integer.parseInt(y)+jKhungVe.getHeight()/2,
